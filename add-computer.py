@@ -26,14 +26,10 @@ Model = Models()
 modelLookup = Model.search(server, token, keyword=modelID)
 modelLookup = json.loads(modelLookup)
 if modelLookup['rows'] == []:
-	Manufacturer = Manufacturers()
-	devMan = Manufacturer.get(server, token)
-	for id in devMan['rows']:
-		for key in id:
-			if (id[key] == 'Apple Inc'):
-				devManID = id['id']
+	#ManufacturerID is the ID number. First manufacturer created is 1.
+	ManufacturerID =  
 	deviceName = currentHardware["SPHardwareDataType"][0]['machine_name']
-	payload = json.dumps({'name': deviceName, 'model_number': modelID, 'fieldset': {'id': 1}, 'manufacturer': {'id': devManID } })
+	payload = json.dumps({'name': deviceName, 'model_number': modelID, 'fieldset': {'id': 1}, 'manufacturer': {'id': ManufacturerID } })
 	response = Model.create(server, token, payload)
 else:
 	modelLookup = modelLookup['rows'][0]['id']
