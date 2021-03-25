@@ -1,4 +1,4 @@
-import subprocess, snipeit, json, osquery
+import subprocess, snipeit, json
 from snipeit import Assets, Models, Company, Manufacturers
 
 server = ''
